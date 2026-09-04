@@ -10,20 +10,17 @@ export const getTasks = (filters = {}) => {
 
 export const getTask = (id) => apiRequest(`/tasks/${id}`);
 
-// Tarea global: se crea en /tasks y opcionalmente puede incluir projectId.
 export const createTask = (data) => apiRequest('/tasks', {
   method: 'POST',
   body: JSON.stringify(data),
 });
 
-// Tarea anidada: se crea directamente dentro de un proyecto.
 export const getProjectTasks = (projectId) => apiRequest(`/projects/${projectId}/tasks`);
 export const createProjectTask = (projectId, data) => apiRequest(`/projects/${projectId}/tasks`, {
   method: 'POST',
   body: JSON.stringify(data),
 });
 
-// Edición y eliminación usan el recurso de tarea por ID.
 export const updateTask = (id, data) => apiRequest(`/tasks/${id}`, {
   method: 'PUT',
   body: JSON.stringify(data),
